@@ -40,6 +40,9 @@ textarea {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .past {
@@ -63,16 +66,18 @@ textarea {
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .saveBtn i:hover {
-  font-size: 20px;
+  font-size: 25px;
   transition: all 0.3s ease-in-out;
 }
 
-::-webkit-input-placeholder {
-  opacity: 1;
-  color: black;
+i {
+  font-size: 40px;
 }
 
 .container-md {

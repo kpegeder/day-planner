@@ -15,59 +15,63 @@ $("button").on("click", function () {
 });
 
 // Store input
-function storePlan(time, plan) {
+function storePlan() {
   localStorage.setItem("timePlan", JSON.stringify(todayPlan));
 }
 
 // Record the event
 function recordEvent(timeID, planID) {
+  // Create an planner object
   let eventName = {
     time: timeID,
     plan: planID
   };
-  console.log(eventName);
   // Don't record in no input
   if (eventName.plan === "") {
     return;
   }
 
+  todayPlan = todayPlan.filter(function (timeSlot) {
+    if (timeSlot.time != eventName.time) {
+      console.log(timeSlot);
+      return true;
+    }
+  });
+
   todayPlan.push(eventName);
-  $("#eventInput").val("");
+  // $("#eventInput").val("");
   storePlan();
 }
 
 // Display event
 function showEvent() {
   let timeArray = [];
-  console.log(typeof $(this).text());
+
   $(".hour").each(function () {
-    console.log("Round");
     timeArray.push($(this).text());
-
-    // if ($(this).text() == todayPlan[i].time) {
-    //   console.log("True");
-    // }
-    // i++;
   });
-  console.log(timeArray);
-  // for (let i = 0; i < todayPlan.length; i++) {
-  //   let inputEvent = todayPlan[i];
-  //   $(".description").text(inputEvent.plan);
 
-  //   console.log(inputEvent);
-  // }
+  for (let i = 0; i < todayPlan.length; i++) {
+    let inputEvent = todayPlan[i];
+
+    // Find time of an event and print out plan
+    index = jQuery.inArray(inputEvent.time, timeArray);
+    planEl = $($(".description").get(index));
+    planEl.text(inputEvent.plan);
+  }
 }
 
 // Get stored plans
 function init() {
   let storedPlans = JSON.parse(localStorage.getItem("timePlan"));
+
   if (storedPlans !== null) {
     todayPlan = storedPlans;
   }
   showEvent();
 }
 
-// Check time
+// Check time and set background
 function checkTime() {
   // Actual time
   let theTime = moment().format("HH");
@@ -78,8 +82,7 @@ function checkTime() {
     if (parseInt(plannerTime[1]) < theTime) {
       $(this).addClass("past");
     } else if (parseInt(plannerTime[1]) == theTime) {
-      $(this).removeClass("past");
-      $(this).addClass("present");
+      $(this).removeClass("past").addClass("present");
     } else {
       $(this).removeClass("past present").addClass("future");
     }
