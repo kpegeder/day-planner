@@ -76,10 +76,6 @@ textarea {
   transition: all 0.3s ease-in-out;
 }
 
-i {
-  font-size: 40px;
-}
-
 .container-md {
   margin-bottom: 2rem;
 }
