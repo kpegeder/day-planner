@@ -25,15 +25,9 @@ $(document).ready(function () {
       plan: planID
     };
 
-    // Don't record in no input
-    if (eventName.plan === "") {
-      return;
-    }
-
     // Save the most recent plan
     todayPlan = todayPlan.filter(function (timeSlot) {
       if (timeSlot.time != eventName.time) {
-        console.log(timeSlot);
         return true;
       }
     });
