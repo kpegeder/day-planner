@@ -1,16 +1,29 @@
-# day-planner
+# Day Planner
 
-Created a single work day planner that will save events for a certain hour. The websites html and css will be updated dynamically powered by jQuery.
+## Summary
 
-The [website](https://kpegeder.github.io/day-planner/) will display the date and time block on the page. Each timeblock will have a text area for input. The background color for the text area will change color based on if the time is in the past, present or future. The save button will save the text area in the timeblock. Once the page is reloaded, the saved events will be appear.
+A single work day planner that will save events for a certain hour. The planner will display whether a time block is in the past, present or future.
+
+## How To Use
+
+The website displays the present day and work hours (9 AM to 5 PM). Each hour is a text field that can record your plans. To keep your plans from being erase, you must press the save button. The save button will allow your plan to be uploaded and displayed the next time you use the planner. The time blocks will change color based on the time: grey is the past, red is the present, and green is the future.
+
+## Demo
 
 ![demo images](./assets/images/hello.png)
 ![demo images](./assets/images/goodMorning.png)
 
-Website includes:
--\$(this)
--DOM parent and sibling
--filter
--localStorage
--addClass/removeClass
--each
+### Technology Used:
+
+- HTML
+- CSS
+- JavaScript
+- jQuery
+
+### Links
+
+Deployed URL: https://kpegeder.github.io/day-planner/
+
+GitHub Repository URL: https://github.com/kpegeder/day-planner
+
+### Lincense - MIT
